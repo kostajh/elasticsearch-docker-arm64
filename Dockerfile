@@ -36,9 +36,9 @@ RUN mkdir /usr/share/elasticsearch
 WORKDIR /usr/share/elasticsearch
 
 RUN cd /tmp && \
-    curl -O https://s3-eu-central-1.amazonaws.com/scientist-artifacts/elasticsearch/elasticsearch-oss-6.8.24-SNAPSHOT-linux-aarch64.tar.gz && \
-    tar xzvf elasticsearch-oss-6.8.24-SNAPSHOT-linux-aarch64.tar.gz --strip-components=1 -C /usr/share/elasticsearch && \
-    rm elasticsearch-oss-6.8.24-SNAPSHOT-linux-aarch64.tar.gz
+    curl -O https://people.wikimedia.org/~kharlan/elasticsearch-oss-6.8.23-SNAPSHOT.tar.gz && \
+    tar xzvf elasticsearch-oss-6.8.23-SNAPSHOT.tar.gz --strip-components=1 -C /usr/share/elasticsearch && \
+    rm elasticsearch-oss-6.8.23-SNAPSHOT.tar.gz
 RUN grep ES_DISTRIBUTION_TYPE=tar /usr/share/elasticsearch/bin/elasticsearch-env \
     && sed -ie 's/ES_DISTRIBUTION_TYPE=tar/ES_DISTRIBUTION_TYPE=docker/' /usr/share/elasticsearch/bin/elasticsearch-env
 RUN mkdir -p config data logs
@@ -105,7 +105,7 @@ LABEL org.label-schema.build-date="2021-05-11T13:32:43.325594Z" \
   org.label-schema.vcs-ref="103f38cad814fb566f91d2c75828b835b910eab0" \
   org.label-schema.vcs-url="https://github.com/elastic/elasticsearch" \
   org.label-schema.vendor="Elastic" \
-  org.label-schema.version="6.8.24-SNAPSHOT" \
+  org.label-schema.version="6.8.23-SNAPSHOT" \
   org.opencontainers.image.created="2021-05-11T13:32:43.325594Z" \
   org.opencontainers.image.documentation="https://www.elastic.co/guide/en/elasticsearch/reference/index.html" \
   org.opencontainers.image.licenses="Elastic-License" \
@@ -114,7 +114,7 @@ LABEL org.label-schema.build-date="2021-05-11T13:32:43.325594Z" \
   org.opencontainers.image.title="Elasticsearch" \
   org.opencontainers.image.url="https://www.elastic.co/products/elasticsearch" \
   org.opencontainers.image.vendor="Elastic" \
-  org.opencontainers.image.version="6.8.24-SNAPSHOT"
+  org.opencontainers.image.version="6.8.23-SNAPSHOT"
 
 # Hack to remove intel Avx flags
 RUN sed -e '/UseAVX/ s/^#*/#/' -i /usr/share/elasticsearch/config/jvm.options
