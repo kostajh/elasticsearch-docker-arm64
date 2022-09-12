@@ -1,5 +1,7 @@
 # ElasticSearch 6.8.23 arm64 docker image
 
+**Note**: For Wikimedia projects, you probably want to use ElasticSearch 7.10.2. See https://gitlab.wikimedia.org/kharlan/wmf-elasticsearch-arm64/ for that.
+
 ## Building the image
 ```
 docker build . -t elasticsearch-arm:6.8.23
